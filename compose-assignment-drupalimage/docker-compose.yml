@@ -4,6 +4,7 @@ version: '2'
 services: 
   drupal:
     image: drupal
+    build: .
     ports: 
       - "8080:80"
     volumes:
@@ -15,9 +16,12 @@ services:
     image: postgres:9.6
     environment:
       - POSTGRES_PASSWORD=mypasswd
+    volumes:
+      - drupal-data:/var/lib/postgresql/data
 
 
 volumes: 
+  drupal-data:
   drupal-modules:
   drupal-profiles:
   drupal-sites:
